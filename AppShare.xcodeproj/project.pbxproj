@@ -18,6 +18,7 @@
 		C10DC7331E6C4C5B007EB63B /* AppShareExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC7321E6C4C5B007EB63B /* AppShareExampleTests.swift */; };
 		C10DC73E1E6C4C5B007EB63B /* AppShareExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC73D1E6C4C5B007EB63B /* AppShareExampleUITests.swift */; };
 		C10DC74B1E6C51E5007EB63B /* AppShareLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */; };
+		C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC74F1E6C599E007EB63B /* AppShare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		C10DC73F1E6C4C5B007EB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C10DC74C1E6C51E5007EB63B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10DC74E1E6C51E9007EB63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
+		C10DC74F1E6C599E007EB63B /* AppShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				C10DC7001E6C4C3C007EB63B /* AppShare.h */,
 				C10DC7011E6C4C3C007EB63B /* Info.plist */,
 				C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */,
+				C10DC74F1E6C599E007EB63B /* AppShare.swift */,
 			);
 			path = AppShare;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 					C10DC6FC1E6C4C3C007EB63B = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 5BK7SLA524;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					C10DC7051E6C4C3C007EB63B = {
@@ -393,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +588,7 @@
 		C10DC7121E6C4C3C007EB63B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5BK7SLA524;
@@ -596,6 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.worldshaking.AppShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -603,6 +610,7 @@
 		C10DC7131E6C4C3C007EB63B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5BK7SLA524;
@@ -623,6 +631,7 @@
 		C10DC7151E6C4C3C007EB63B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5BK7SLA524;
 				INFOPLIST_FILE = AppShareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -635,6 +644,7 @@
 		C10DC7161E6C4C3C007EB63B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5BK7SLA524;
 				INFOPLIST_FILE = AppShareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
