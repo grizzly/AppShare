@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>AppShareExample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,21 @@
 			<true/>
 		</dict>
 		<key>C10DC7051E6C4C3C007EB63B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C10DC71A1E6C4C5A007EB63B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C10DC72D1E6C4C5B007EB63B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C10DC7381E6C4C5B007EB63B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
