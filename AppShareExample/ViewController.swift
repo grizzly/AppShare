@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import AppShare
 
 class ViewController: UIViewController {
+    
+    var appShare : AppShare?;
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Go to https://applink.co an get your applinkCode (for free of course) and enter it below instead
+        // of the example one.
+        
+        self.appShare = AppShare(applinkCode: "1000026", vc:self);
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func shareThisAppButtonPressed(_ sender: Any) {
+        appShare?.shareApp();
+    }
 
 }
 

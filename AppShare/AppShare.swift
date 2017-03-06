@@ -22,20 +22,75 @@
 
 import Foundation
 
-class AppRating {
+open class AppShare {
     
-    var vc : UIViewController?;
+    var applinkCode : String?;
     
-    init(vc:UIViewController) {
-        self.vc = vc;
+    /**
+     * MARK: -
+     * MARK: Initialization
+     * set the applink.co Code, as received on
+     * https://applink.co
+     *
+     * - Parameter applinkCode: your applink.co code
+     */
+    public init(applinkCode: String, vc:UIViewController) {
+        self.applinkCode(applinkCode);
+        self.manager.vc = vc;
     }
     
-    func share(url:URL) {
-        let objectsToShare = [url]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        if let vc = self.vc {
-            vc.present(activityVC, animated: true, completion: nil)
+    /**
+     * Singleton instance of the underlaying share manager.
+     */
+    let manager : AppShareManager = {
+        struct Singleton {
+            static let instance: AppShareManager = AppShareManager();
         }
+        return Singleton.instance;
+    }()
+    
+    
+    /**
+     * Share current app.
+     */
+    open func shareApp() {
+        self.manager.shareApp();
+    }
+    
+    /**
+     * set the applink.co Code, as received on
+     * https://applink.co
+     *
+     * - Parameter applinkCode: your applink.co code
+     */
+    open func applinkCode(_ applinkCode: String) {
+        self.applinkCode = applinkCode;
+        self.manager.applinkCode = applinkCode
+    }
+    
+}
+
+open class AppShareManager : NSObject {
+    
+    var applinkCode : String?;
+    var vc : UIViewController?;
+
+    func shareApp() {
+        if let url = getShareURL() {
+            let objectsToShare = [url]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            if let vc = self.vc {
+                vc.present(activityVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func getShareURL() -> URL? {
+        if let applinkCode = self.applinkCode {
+            let urlString = "https://applink.co/" + applinkCode
+            return URL(string: urlString);
+        }
+        return nil;
     }
     
 }
