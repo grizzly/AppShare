@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 import Foundation
+import Social
 
 open class AppShare {
     
@@ -56,6 +57,20 @@ open class AppShare {
     open func shareApp() {
         self.manager.shareApp();
     }
+
+    /**
+     * Share current app on Facebook.
+     */
+    open func shareOnFacebook() {
+        self.manager.shareOnFacebook();
+    }
+    
+    /**
+     * Share current app on Twitter.
+     */
+    open func shareOnTwitter() {
+        self.manager.shareOnTwitter();
+    }
     
     /**
      * set the applink.co Code, as received on
@@ -82,6 +97,30 @@ open class AppShareManager : NSObject {
             if let vc = self.vc {
                 vc.present(activityVC, animated: true, completion: nil)
             }
+        }
+    }
+    
+    open func shareOnTwitter() {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.add(self.getShareURL())
+            self.vc?.present(twitterSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.vc?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    open func shareOnFacebook() {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.add(self.getShareURL())
+            self.vc?.present(facebookSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.vc?.present(alert, animated: true, completion: nil)
         }
     }
     

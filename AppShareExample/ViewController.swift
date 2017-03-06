@@ -29,6 +29,14 @@ class ViewController: UIViewController {
     @IBAction func shareThisAppButtonPressed(_ sender: Any) {
         appShare?.shareApp();
     }
+    
+    @IBAction func shareOnTwitterButtonPressed(_ sender: Any) {
+        appShare?.shareOnTwitter();
+    }
+    
+    @IBAction func shareOnFacebookButtonPressed(_ sender: Any) {
+        appShare?.shareOnFacebook();
+    }
 
 }
 
