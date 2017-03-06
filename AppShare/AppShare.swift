@@ -35,9 +35,8 @@ open class AppShare {
      *
      * - Parameter applinkCode: your applink.co code
      */
-    public init(applinkCode: String, vc:UIViewController) {
+    public init(applinkCode: String) {
         self.applinkCode(applinkCode);
-        self.manager.vc = vc;
     }
     
     /**
@@ -88,13 +87,12 @@ open class AppShare {
 open class AppShareManager : NSObject {
     
     var applinkCode : String?;
-    var vc : UIViewController?;
 
     func shareApp() {
         if let url = getShareURL() {
             let objectsToShare = [url]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            if let vc = self.vc {
+            if let vc = self.topMostViewController(self.getRootViewController()){
                 vc.present(activityVC, animated: true, completion: nil)
             }
         }
@@ -104,11 +102,15 @@ open class AppShareManager : NSObject {
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterSheet.add(self.getShareURL())
-            self.vc?.present(twitterSheet, animated: true, completion: nil)
+            if let vc = self.topMostViewController(self.getRootViewController()){
+                vc.present(twitterSheet, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.vc?.present(alert, animated: true, completion: nil)
+            if let vc = self.topMostViewController(self.getRootViewController()){
+                vc.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -116,11 +118,15 @@ open class AppShareManager : NSObject {
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
             let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             facebookSheet.add(self.getShareURL())
-            self.vc?.present(facebookSheet, animated: true, completion: nil)
+            if let vc = self.topMostViewController(self.getRootViewController()){
+                vc.present(facebookSheet, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.vc?.present(alert, animated: true, completion: nil)
+                if let vc = self.topMostViewController(self.getRootViewController()){
+                    vc.present(alert, animated: true, completion: nil)
+                }
         }
     }
     
@@ -130,6 +136,52 @@ open class AppShareManager : NSObject {
             return URL(string: urlString);
         }
         return nil;
+    }
+    
+    private func topMostViewController(_ controller: UIViewController?) -> UIViewController? {
+        var isPresenting: Bool = false
+        var topController: UIViewController? = controller
+        repeat {
+            // this path is called only on iOS 6+, so -presentedViewController is fine here.
+            if let controller = topController {
+                if let presented = controller.presentedViewController {
+                    isPresenting = true
+                    topController = presented
+                } else {
+                    isPresenting = false
+                }
+            }
+        } while isPresenting
+        
+        return topController
+    }
+    
+    private func getRootViewController() -> UIViewController? {
+        if var window = UIApplication.shared.keyWindow {
+            
+            if window.windowLevel != UIWindowLevelNormal {
+                let windows: NSArray = UIApplication.shared.windows as NSArray
+                for candidateWindow in windows {
+                    if let candidateWindow = candidateWindow as? UIWindow {
+                        if candidateWindow.windowLevel == UIWindowLevelNormal {
+                            window = candidateWindow
+                            break
+                        }
+                    }
+                }
+            }
+            
+            for subView in window.subviews {
+                if let responder = subView.next {
+                    if responder.isKind(of: UIViewController.self) {
+                        return topMostViewController(responder as? UIViewController)
+                    }
+                    
+                }
+            }
+        }
+        
+        return nil
     }
     
 }
