@@ -22,6 +22,7 @@
 
 import Foundation
 import Social
+import MessageUI
 
 open class AppShare {
     
@@ -71,10 +72,11 @@ open class AppShare {
     
 }
 
-open class AppShareManager : NSObject {
+open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     
     var applinkCode : String?;
     var vc : UIViewController?;
+    var mailComposer : MFMailComposeViewController?;
 
     func shareApp() {
         if let url = _getShareURL() {
@@ -101,6 +103,8 @@ open class AppShareManager : NSObject {
                     break;
                 case .twitter:
                     self._shareOnTwitter(text: text, url: url);
+                case .email:
+                    self._shareByMail(text: shareText);
                     break;
                 default:
                     return;
@@ -170,8 +174,41 @@ open class AppShareManager : NSObject {
         return nil;
     }
     
+    private func _shareByMail(text:String) {
+        mailComposer = MFMailComposeViewController()
+        mailComposer?.mailComposeDelegate = self
+        mailComposer?.setMessageBody(text, isHTML: true)
+        if let mailComposer = self.mailComposer {
+            if let vc = self.vc {
+                vc.present(mailComposer, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    // Email delegate
+    public func mailComposeController(_ controller:MFMailComposeViewController, didFinishWith result:MFMailComposeResult, error:Error?) {
+        var outputMessage = ""
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:  outputMessage = ""
+        case MFMailComposeResult.saved.rawValue:  outputMessage = ""
+        case MFMailComposeResult.sent.rawValue:  outputMessage = ""
+        case MFMailComposeResult.failed.rawValue: outputMessage = "Something went wrong with sending Mail, try again later."
+        default:break  }
+        
+        if let vc = self.vc {
+            vc.dismiss(animated: false, completion: { () -> Void in
+                if (outputMessage != "") {
+                    self._showAlertView(title: "Email", message: outputMessage);
+                }
+            })
+        }
+        
+        
+    }
+    
 }
 
 public enum AppShareService: Int {
-    case all, facebook, twitter, whatsapp
+    case all, facebook, twitter, whatsapp, email
 }

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func shareThisAppButtonPressed(_ sender: Any) {
-        appShare?.shareApp(on: .twitter)
+        appShare?.shareApp(on: .email)
     }
 
 }
