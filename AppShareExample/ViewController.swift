@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         // Go to https://applink.co an get your applinkCode (for free of course) and enter it below instead
         // of the example one.
         
-        self.appShare = AppShare(applinkCode: "1000026", vc:self);
+        self.appShare = AppShare(applinkCode: "1000160", vc:self);
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func shareThisAppButtonPressed(_ sender: Any) {
-        appShare?.shareApp();
+        appShare?.shareApp(on: .twitter)
     }
 
 }
