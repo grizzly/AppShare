@@ -1,6 +1,6 @@
-// AppRating.swift
+// AppShare.swift
 //
-// Copyright (c) 2017 GrizzlyNT (https://github.com/grizzly/AppRating)
+// Copyright (c) 2017 GrizzlyNT (https://github.com/grizzly/AppShare)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -68,6 +68,14 @@ open class AppShare {
     open func applinkCode(_ applinkCode: String) {
         self.applinkCode = applinkCode;
         self.manager.applinkCode = applinkCode
+    }
+    
+    open func openShareWindow() {
+        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
+        let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
+        let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
+        vc.applinkCode = self.applinkCode;
+        self.manager.vc?.present(vc, animated: true);
     }
     
 }

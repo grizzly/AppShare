@@ -21,6 +21,8 @@
 		C10DC73E1E6C4C5B007EB63B /* AppShareExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC73D1E6C4C5B007EB63B /* AppShareExampleUITests.swift */; };
 		C10DC74B1E6C51E5007EB63B /* AppShareLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */; };
 		C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC74F1E6C599E007EB63B /* AppShare.swift */; };
+		C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */; };
+		C142B1DD1E768C30009B4D43 /* AppShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		C10DC74C1E6C51E5007EB63B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10DC74E1E6C51E9007EB63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10DC74F1E6C599E007EB63B /* AppShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShare.swift; sourceTree = "<group>"; };
+		C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppShare.storyboard; sourceTree = "<group>"; };
+		C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 				C10DC7011E6C4C3C007EB63B /* Info.plist */,
 				C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */,
 				C10DC74F1E6C599E007EB63B /* AppShare.swift */,
+				C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */,
+				C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */,
 			);
 			path = AppShare;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */,
 				C10DC74B1E6C51E5007EB63B /* AppShareLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C142B1DD1E768C30009B4D43 /* AppShareViewController.swift in Sources */,
 				C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
