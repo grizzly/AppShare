@@ -70,12 +70,8 @@ open class AppShare {
         self.manager.applinkCode = applinkCode
     }
     
-    open func openShareWindow() {
-        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
-        let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
-        let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
-        vc.applinkCode = self.applinkCode;
-        self.manager.vc?.present(vc, animated: true);
+    open func openShareWindow(viewcontroller: UIViewController) {
+        self.manager.openShareWindow(viewcontroller: viewcontroller);
     }
     
 }
@@ -119,6 +115,14 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
                 }
             }
         }
+    }
+    
+    open func openShareWindow(viewcontroller: UIViewController) {
+        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
+        let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
+        let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
+        vc.applinkCode = self.applinkCode;
+        viewcontroller.present(vc, animated: true);
     }
     
     // - Privates
@@ -213,6 +217,24 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
         }
         
         
+    }
+    
+    private func _topMostViewController(_ controller: UIViewController?) -> UIViewController? {
+        var isPresenting: Bool = false
+        var topController: UIViewController? = controller
+        repeat {
+            // this path is called only on iOS 6+, so -presentedViewController is fine here.
+            if let controller = topController {
+                if let presented = controller.presentedViewController {
+                    isPresenting = true
+                    topController = presented
+                } else {
+                    isPresenting = false
+                }
+            }
+        } while isPresenting
+        
+        return topController
     }
     
 }

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func shareThisAppButtonPressed(_ sender: Any) {
-        appShare?.openShareWindow()
+        appShare?.openShareWindow(viewcontroller: self)
     }
 
 }

@@ -12,47 +12,50 @@
         <!--App Share View Controller-->
         <scene sceneID="ZMb-Yr-EoG">
             <objects>
-                <viewController id="4aP-Id-wbh" customClass="AppShareViewController" customModule="AppShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="4aP-Id-wbh" customClass="AppShareViewController" customModule="AppShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W3g-gk-Qsf"/>
                         <viewControllerLayoutGuide type="bottom" id="aKU-rj-Sjw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BOY-pK-OI3">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="BOY-pK-OI3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XKg-vb-Gw3">
-                                <rect key="frame" x="121" y="273" width="132" height="120"/>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="redraw" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="XKg-vb-Gw3">
+                                <rect key="frame" x="97" y="246" width="180" height="174"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btx-Yz-JRE">
-                                        <rect key="frame" x="0.0" y="0.0" width="132" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                         <state key="normal" title="Share on Facebook"/>
                                         <connections>
                                             <action selector="shareOnFacebookButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="jMc-XD-CFL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3H-0H-VDf">
-                                        <rect key="frame" x="9.5" y="30" width="113" height="30"/>
+                                        <rect key="frame" x="0.0" y="48" width="180" height="30"/>
                                         <state key="normal" title="Share on Twitter"/>
                                         <connections>
                                             <action selector="shareOnTwitterButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="q9L-Kf-zgK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-Vg-NgB">
-                                        <rect key="frame" x="0.5" y="60" width="131" height="30"/>
+                                        <rect key="frame" x="0.0" y="96" width="180" height="30"/>
                                         <state key="normal" title="Send by WhatsApp"/>
                                         <connections>
                                             <action selector="sendByWhatsAppButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="glL-ls-soW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-Lr-JLO">
-                                        <rect key="frame" x="17.5" y="90" width="97" height="30"/>
+                                        <rect key="frame" x="0.0" y="144" width="180" height="30"/>
                                         <state key="normal" title="Send by Email"/>
                                         <connections>
                                             <action selector="sendByEmailButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="Rph-ba-Zmf"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="PDH-wT-dRQ"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdc-tX-HBN">
                                 <rect key="frame" x="21" y="20" width="37" height="30"/>
@@ -62,7 +65,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qdc-tX-HBN" firstAttribute="top" secondItem="W3g-gk-Qsf" secondAttribute="bottom" id="JIE-sU-GjG"/>
                             <constraint firstItem="XKg-vb-Gw3" firstAttribute="centerY" secondItem="BOY-pK-OI3" secondAttribute="centerY" id="S8s-oo-jJ0"/>

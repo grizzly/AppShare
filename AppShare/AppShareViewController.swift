@@ -29,14 +29,23 @@ class AppShareViewController : UIViewController {
     @IBOutlet weak var sendByWhatsAppButton: UIButton!
     @IBOutlet weak var sendByEmailButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    
-    var appShare : AppShare?;
+
     var applinkCode : String?;
+    
+    var colorTint : UIColor = .black;
+    var tintAlpha : CGFloat = 0.5;
+    var blurRadius : CGFloat = 5;
+    var fontColor : UIColor = .white;
+    
+    private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
+    private var visualEffectView : UIVisualEffectView?
+    private var appShare : AppShare?;
     
     override func viewDidLoad() {
         if let applinkCode = self.applinkCode {
             self.appShare = AppShare(applinkCode: applinkCode, vc: self);
         }
+        self.setLayout();
     }
     
     @IBAction func shareOnFacebookButtonPressed(_ sender: Any) {
@@ -57,6 +66,57 @@ class AppShareViewController : UIViewController {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);
+    }
+    
+    /// Sets the value for the key on the blurEffect.
+    private func _setEffectViewValue(_ value: Any?, forKey key: String) {
+        blurEffect.setValue(value, forKeyPath: key)
+        self.visualEffectView?.effect = blurEffect
+    }
+    
+    private func setLayout() {
+        if (self.visualEffectView == nil) {
+            self.view.backgroundColor = UIColor.clear;
+            self.view.isOpaque = false;
+            self.visualEffectView = UIVisualEffectView(frame: self.view.bounds)
+            if let visualEffectView = self.visualEffectView {
+                visualEffectView.backgroundColor = UIColor.clear;
+                visualEffectView.isOpaque = false;
+                visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight];
+                self._setEffectViewValue(self.colorTint, forKey: "colorTint");
+                self._setEffectViewValue(self.tintAlpha, forKey: "colorTintAlpha");
+                self._setEffectViewValue(self.blurRadius, forKey: "blurRadius");
+                self.view.addSubview(visualEffectView)
+                self.view.sendSubview(toBack: visualEffectView);
+            }
+        }
+        self.setSocialButtonLayout(button: self.shareOnFacebookButton);
+        self.setSocialButtonLayout(button: self.shareOnTwitterButton);
+        self.setSocialButtonLayout(button: self.sendByWhatsAppButton);
+        self.setSocialButtonLayout(button: self.sendByEmailButton);
+        
+        
+        
+        self.setButtonLayout(button: self.closeButton);
+    }
+    
+    private func setSocialButtonLayout(button : UIButton) {
+        button.setTitleColor(self.fontColor, for: .normal);
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = self.fontColor.cgColor
+        button.titleEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8);
+        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
+        if let currentTitle = button.title(for: .normal) {
+            let title = frameworkBundle?.localizedString(forKey: currentTitle, value:"", table: "AppShareLocalizable");
+            button.setTitle(title, for: .normal);
+        }
+        
+    }
+    
+    private func setButtonLayout(button : UIButton) {
+        button.setTitleColor(self.fontColor, for: .normal);
     }
     
     

@@ -19,8 +19,8 @@
 		C10DC7281E6C4C5A007EB63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10DC7261E6C4C5A007EB63B /* LaunchScreen.storyboard */; };
 		C10DC7331E6C4C5B007EB63B /* AppShareExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC7321E6C4C5B007EB63B /* AppShareExampleTests.swift */; };
 		C10DC73E1E6C4C5B007EB63B /* AppShareExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC73D1E6C4C5B007EB63B /* AppShareExampleUITests.swift */; };
-		C10DC74B1E6C51E5007EB63B /* AppShareLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */; };
 		C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC74F1E6C599E007EB63B /* AppShare.swift */; };
+		C10E3CBC1E77CBED006ABA4B /* AppShareLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10E3CB81E77CBED006ABA4B /* AppShareLocalizable.strings */; };
 		C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */; };
 		C142B1DD1E768C30009B4D43 /* AppShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */; };
 /* End PBXBuildFile section */
@@ -90,9 +90,10 @@
 		C10DC7391E6C4C5B007EB63B /* AppShareExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppShareExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10DC73D1E6C4C5B007EB63B /* AppShareExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShareExampleUITests.swift; sourceTree = "<group>"; };
 		C10DC73F1E6C4C5B007EB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C10DC74C1E6C51E5007EB63B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
-		C10DC74E1E6C51E9007EB63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10DC74F1E6C599E007EB63B /* AppShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShare.swift; sourceTree = "<group>"; };
+		C10E3CB91E77CBED006ABA4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
+		C10E3CBA1E77CBED006ABA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
+		C10E3CBB1E77CBED006ABA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppShare.storyboard; sourceTree = "<group>"; };
 		C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,9 +166,9 @@
 		C10DC6FF1E6C4C3C007EB63B /* AppShare */ = {
 			isa = PBXGroup;
 			children = (
+				C10E3CB71E77CBED006ABA4B /* Localization */,
 				C10DC7001E6C4C3C007EB63B /* AppShare.h */,
 				C10DC7011E6C4C3C007EB63B /* Info.plist */,
-				C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */,
 				C10DC74F1E6C599E007EB63B /* AppShare.swift */,
 				C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */,
 				C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */,
@@ -214,6 +215,14 @@
 			);
 			path = AppShareExampleUITests;
 			sourceTree = "<group>";
+		};
+		C10E3CB71E77CBED006ABA4B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				C10E3CB81E77CBED006ABA4B /* AppShareLocalizable.strings */,
+			);
+			path = Localization;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -367,6 +376,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = C10DC6F31E6C4C3C007EB63B;
 			productRefGroup = C10DC6FE1E6C4C3C007EB63B /* Products */;
@@ -388,7 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */,
-				C10DC74B1E6C51E5007EB63B /* AppShareLocalizable.strings in Resources */,
+				C10E3CBC1E77CBED006ABA4B /* AppShareLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,15 +520,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		C10DC74D1E6C51E5007EB63B /* AppShareLocalizable.strings */ = {
+		C10E3CB81E77CBED006ABA4B /* AppShareLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C10DC74C1E6C51E5007EB63B /* en */,
-				C10DC74E1E6C51E9007EB63B /* Base */,
+				C10E3CB91E77CBED006ABA4B /* Base */,
+				C10E3CBA1E77CBED006ABA4B /* de */,
+				C10E3CBB1E77CBED006ABA4B /* en */,
 			);
 			name = AppShareLocalizable.strings;
-			path = Localization;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
