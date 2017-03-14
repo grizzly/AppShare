@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12074.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="redraw" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="XKg-vb-Gw3">
-                                <rect key="frame" x="97" y="246" width="180" height="174"/>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="XKg-vb-Gw3">
+                                <rect key="frame" x="97" y="222" width="180" height="222"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btx-Yz-JRE">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
@@ -52,24 +51,22 @@
                                             <action selector="sendByEmailButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="Rph-ba-Zmf"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdc-tX-HBN">
+                                        <rect key="frame" x="0.0" y="192" width="180" height="30"/>
+                                        <state key="normal" title="close"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="acr-rI-pjv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="PDH-wT-dRQ"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdc-tX-HBN">
-                                <rect key="frame" x="21" y="20" width="37" height="30"/>
-                                <state key="normal" title="close"/>
-                                <connections>
-                                    <action selector="closeButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="acr-rI-pjv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qdc-tX-HBN" firstAttribute="top" secondItem="W3g-gk-Qsf" secondAttribute="bottom" id="JIE-sU-GjG"/>
                             <constraint firstItem="XKg-vb-Gw3" firstAttribute="centerY" secondItem="BOY-pK-OI3" secondAttribute="centerY" id="S8s-oo-jJ0"/>
-                            <constraint firstItem="qdc-tX-HBN" firstAttribute="leading" secondItem="BOY-pK-OI3" secondAttribute="leadingMargin" constant="5" id="i3Y-3t-4dB"/>
                             <constraint firstItem="XKg-vb-Gw3" firstAttribute="centerX" secondItem="BOY-pK-OI3" secondAttribute="centerX" id="y77-Gn-WSi"/>
                         </constraints>
                     </view>

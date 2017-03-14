@@ -90,17 +90,14 @@ class AppShareViewController : UIViewController {
                 self.view.sendSubview(toBack: visualEffectView);
             }
         }
-        self.setSocialButtonLayout(button: self.shareOnFacebookButton);
-        self.setSocialButtonLayout(button: self.shareOnTwitterButton);
-        self.setSocialButtonLayout(button: self.sendByWhatsAppButton);
-        self.setSocialButtonLayout(button: self.sendByEmailButton);
-        
-        
-        
-        self.setButtonLayout(button: self.closeButton);
+        self.setSocialButtonLayout(button: self.shareOnFacebookButton, bold: true);
+        self.setSocialButtonLayout(button: self.shareOnTwitterButton, bold: true);
+        self.setSocialButtonLayout(button: self.sendByWhatsAppButton, bold: true);
+        self.setSocialButtonLayout(button: self.sendByEmailButton, bold: true);
+        self.setSocialButtonLayout(button: self.closeButton, bold: false);
     }
     
-    private func setSocialButtonLayout(button : UIButton) {
+    private func setSocialButtonLayout(button : UIButton, bold:Bool) {
         button.setTitleColor(self.fontColor, for: .normal);
         button.backgroundColor = .clear
         button.layer.cornerRadius = 5
@@ -112,14 +109,11 @@ class AppShareViewController : UIViewController {
             let title = frameworkBundle?.localizedString(forKey: currentTitle, value:"", table: "AppShareLocalizable");
             button.setTitle(title, for: .normal);
         }
-        
+        if (bold) {
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        }
     }
-    
-    private func setButtonLayout(button : UIButton) {
-        button.setTitleColor(self.fontColor, for: .normal);
-    }
-    
-    
+
 }
 
 
