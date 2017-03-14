@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "AppShare"
-  spec.version = "0.6.2"
+  spec.version = "0.6.4"
   spec.summary = "A simple yet powerful App Sharing Manager for iOS in Swift 3. Get your App viral now."
   spec.description = <<-DESC
     A simple yet powerful App Sharing Manager for iOS in Swift.
