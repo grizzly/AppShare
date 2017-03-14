@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		78F511D01E6D7E1000965EEF /* AppShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10DC6FD1E6C4C3C007EB63B /* AppShare.framework */; };
+		785729341E7814120044C8D4 /* AppShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787A960C1E78123E009B49FA /* AppShare.storyboard */; };
 		78F511D11E6D7E1000965EEF /* AppShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C10DC6FD1E6C4C3C007EB63B /* AppShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C10DC7071E6C4C3C007EB63B /* AppShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10DC6FD1E6C4C3C007EB63B /* AppShare.framework */; };
 		C10DC70C1E6C4C3C007EB63B /* AppShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC70B1E6C4C3C007EB63B /* AppShareTests.swift */; };
@@ -21,7 +21,6 @@
 		C10DC73E1E6C4C5B007EB63B /* AppShareExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC73D1E6C4C5B007EB63B /* AppShareExampleUITests.swift */; };
 		C10DC7501E6C599E007EB63B /* AppShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC74F1E6C599E007EB63B /* AppShare.swift */; };
 		C10E3CBC1E77CBED006ABA4B /* AppShareLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10E3CB81E77CBED006ABA4B /* AppShareLocalizable.strings */; };
-		C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */; };
 		C142B1DD1E768C30009B4D43 /* AppShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		787A960B1E78123E009B49FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AppShare.storyboard; sourceTree = "<group>"; };
 		C10DC6FD1E6C4C3C007EB63B /* AppShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10DC7001E6C4C3C007EB63B /* AppShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppShare.h; sourceTree = "<group>"; };
 		C10DC7011E6C4C3C007EB63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,7 +94,6 @@
 		C10E3CB91E77CBED006ABA4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10E3CBB1E77CBED006ABA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
 		C10E3CBE1E77D59C006ABA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShareLocalizable.strings; sourceTree = "<group>"; };
-		C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppShare.storyboard; sourceTree = "<group>"; };
 		C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,14 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C10DC7071E6C4C3C007EB63B /* AppShare.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C10DC7181E6C4C5A007EB63B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78F511D01E6D7E1000965EEF /* AppShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +161,7 @@
 				C10DC7001E6C4C3C007EB63B /* AppShare.h */,
 				C10DC7011E6C4C3C007EB63B /* Info.plist */,
 				C10DC74F1E6C599E007EB63B /* AppShare.swift */,
-				C142B1DA1E768C1F009B4D43 /* AppShare.storyboard */,
+				787A960C1E78123E009B49FA /* AppShare.storyboard */,
 				C142B1DC1E768C30009B4D43 /* AppShareViewController.swift */,
 			);
 			path = AppShare;
@@ -279,7 +270,6 @@
 			buildConfigurationList = C10DC7401E6C4C5B007EB63B /* Build configuration list for PBXNativeTarget "AppShareExample" */;
 			buildPhases = (
 				C10DC7171E6C4C5A007EB63B /* Sources */,
-				C10DC7181E6C4C5A007EB63B /* Frameworks */,
 				C10DC7191E6C4C5A007EB63B /* Resources */,
 				78F511D21E6D7E1000965EEF /* Embed Frameworks */,
 			);
@@ -397,7 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C142B1DB1E768C1F009B4D43 /* AppShare.storyboard in Resources */,
+				785729341E7814120044C8D4 /* AppShare.storyboard in Resources */,
 				C10E3CBC1E77CBED006ABA4B /* AppShareLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +494,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		787A960C1E78123E009B49FA /* AppShare.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				787A960B1E78123E009B49FA /* Base */,
+			);
+			name = AppShare.storyboard;
+			sourceTree = "<group>";
+		};
 		C10DC7211E6C4C5A007EB63B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -650,7 +648,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AppShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grizzlynt.AppShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -672,7 +670,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AppShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.grizzlynt.AppShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
