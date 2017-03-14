@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4aP-Id-wbh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12074.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--App Share View Controller-->
+        <scene sceneID="ZMb-Yr-EoG">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="4aP-Id-wbh" customClass="AppShareViewController" customModule="AppShare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W3g-gk-Qsf"/>
+                        <viewControllerLayoutGuide type="bottom" id="aKU-rj-Sjw"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="BOY-pK-OI3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="XKg-vb-Gw3">
+                                <rect key="frame" x="97" y="222" width="180" height="222"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btx-Yz-JRE">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
+                                        <state key="normal" title="Share on Facebook"/>
+                                        <connections>
+                                            <action selector="shareOnFacebookButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="jMc-XD-CFL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3H-0H-VDf">
+                                        <rect key="frame" x="0.0" y="48" width="180" height="30"/>
+                                        <state key="normal" title="Share on Twitter"/>
+                                        <connections>
+                                            <action selector="shareOnTwitterButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="q9L-Kf-zgK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-Vg-NgB">
+                                        <rect key="frame" x="0.0" y="96" width="180" height="30"/>
+                                        <state key="normal" title="Send by WhatsApp"/>
+                                        <connections>
+                                            <action selector="sendByWhatsAppButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="glL-ls-soW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-Lr-JLO">
+                                        <rect key="frame" x="0.0" y="144" width="180" height="30"/>
+                                        <state key="normal" title="Send by Email"/>
+                                        <connections>
+                                            <action selector="sendByEmailButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="Rph-ba-Zmf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdc-tX-HBN">
+                                        <rect key="frame" x="0.0" y="192" width="180" height="30"/>
+                                        <state key="normal" title="close"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="4aP-Id-wbh" eventType="touchUpInside" id="acr-rI-pjv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="PDH-wT-dRQ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XKg-vb-Gw3" firstAttribute="centerY" secondItem="BOY-pK-OI3" secondAttribute="centerY" id="S8s-oo-jJ0"/>
+                            <constraint firstItem="XKg-vb-Gw3" firstAttribute="centerX" secondItem="BOY-pK-OI3" secondAttribute="centerX" id="y77-Gn-WSi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="qdc-tX-HBN" id="xgo-Ye-awB"/>
+                        <outlet property="sendByEmailButton" destination="1fC-Lr-JLO" id="uj6-JZ-1l0"/>
+                        <outlet property="sendByWhatsAppButton" destination="jIr-Vg-NgB" id="lRn-MN-xxH"/>
+                        <outlet property="shareOnFacebookButton" destination="Btx-Yz-JRE" id="yfa-hj-1KL"/>
+                        <outlet property="shareOnTwitterButton" destination="B3H-0H-VDf" id="NS6-G3-OJ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylQ-CM-2zV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="177" y="185"/>
+        </scene>
+    </scenes>
+</document>

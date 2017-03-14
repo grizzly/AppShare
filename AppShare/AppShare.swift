@@ -1,6 +1,6 @@
-// AppRating.swift
+// AppShare.swift
 //
-// Copyright (c) 2017 GrizzlyNT (https://github.com/grizzly/AppRating)
+// Copyright (c) 2017 GrizzlyNT (https://github.com/grizzly/AppShare)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,10 @@
 
 import Foundation
 import Social
+<<<<<<< HEAD
+=======
+import MessageUI
+>>>>>>> 8d04b584bcc713f93a072680c18a9d4ba38ed60a
 
 open class AppShare {
     
@@ -53,8 +57,8 @@ open class AppShare {
     /**
      * Share current app.
      */
-    open func shareApp() {
-        self.manager.shareApp();
+    open func shareApp(on: AppShareService) {
+        self.manager.shareAppOn(on: on, text: "")
     }
 
     /**
@@ -82,14 +86,24 @@ open class AppShare {
         self.manager.applinkCode = applinkCode
     }
     
+    open func openShareWindow(viewcontroller: UIViewController) {
+        self.manager.openShareWindow(viewcontroller: viewcontroller);
+    }
+    
 }
 
-open class AppShareManager : NSObject {
+open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     
     var applinkCode : String?;
+<<<<<<< HEAD
+=======
+    var vc : UIViewController?;
+    var mailComposer : MFMailComposeViewController?;
+    public var useMainAppBundleForLocalizations : Bool = false;
+>>>>>>> 8d04b584bcc713f93a072680c18a9d4ba38ed60a
 
     func shareApp() {
-        if let url = getShareURL() {
+        if let url = _getShareURL() {
             let objectsToShare = [url]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             if let vc = self.topMostViewController(self.getRootViewController()){
@@ -98,6 +112,7 @@ open class AppShareManager : NSObject {
         }
     }
     
+<<<<<<< HEAD
     open func shareOnTwitter() {
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
@@ -131,6 +146,95 @@ open class AppShareManager : NSObject {
     }
     
     private func getShareURL() -> URL? {
+=======
+    func shareAppOn(on: AppShareService, text:String) {
+        if let url = _getShareURL() {
+            let shareText = text + " " + url.absoluteString;
+            if let textEncoded = shareText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                switch on {
+                case .whatsapp:
+                    guard let whatsAppUrl = NSURL(string: "whatsapp://send?text=" + textEncoded) else { return }
+                    self._openSocialService(url: whatsAppUrl as URL);
+                    break;
+                case .facebook:
+                    // Facebook does not allow prefilled text, so only url without text can be shared.
+                    self._shareOnFacebook(url: url);
+                    break;
+                case .twitter:
+                    self._shareOnTwitter(text: text, url: url);
+                case .email:
+                    self._shareByMail(text: shareText);
+                    break;
+                default:
+                    return;
+                }
+            }
+        }
+    }
+    
+    open func openShareWindow(viewcontroller: UIViewController) {
+        let frameworkBundle = self.bundle();
+        let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
+        let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
+        vc.applinkCode = self.applinkCode;
+        viewcontroller.present(vc, animated: true);
+    }
+    
+    // - Privates
+    
+    private func _shareOnFacebook(url: URL) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+            let fbSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            fbSheet?.add(url);
+            if let vc = self.vc {
+                vc.present(fbSheet!, animated: true, completion: nil);
+            }
+        } else {
+            self._showAlertView(title: "Facebook", message: "Please login to your Facebook account in Settings");
+        }
+    }
+    
+    private func _shareOnTwitter(text: String, url: URL) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            let twSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twSheet?.setInitialText(text)
+            twSheet?.add(url);
+            if let vc = self.vc {
+                vc.present(twSheet!, animated: true, completion: nil);
+            }
+        } else {
+            self._showAlertView(title: "Twitter", message: "Please login to your Twitter account in Settings");
+        }
+    }
+    
+    private func _openSocialService(url:URL) {
+        if UIApplication.shared.canOpenURL(url as URL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            self._showAlertView(title: "Error", message: "App not found, please download it on the App Store");
+        }
+    }
+    
+    private func _showAlertView(title:String, message:String) {
+        if let vc = self.vc {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            let defaultButton = UIAlertAction(title: "OK",
+                                              style: .default) {(_) in
+                                                
+            }
+            alert.addAction(defaultButton)
+            vc.present(alert, animated: true, completion: nil);
+        }
+    }
+    
+    private func _getShareURL() -> URL? {
+>>>>>>> 8d04b584bcc713f93a072680c18a9d4ba38ed60a
         if let applinkCode = self.applinkCode {
             let urlString = "https://applink.co/" + applinkCode
             return URL(string: urlString);
@@ -138,7 +242,44 @@ open class AppShareManager : NSObject {
         return nil;
     }
     
+<<<<<<< HEAD
     private func topMostViewController(_ controller: UIViewController?) -> UIViewController? {
+=======
+    private func _shareByMail(text:String) {
+        mailComposer = MFMailComposeViewController()
+        mailComposer?.mailComposeDelegate = self
+        mailComposer?.setMessageBody(text, isHTML: true)
+        if let mailComposer = self.mailComposer {
+            if let vc = self.vc {
+                vc.present(mailComposer, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    // Email delegate
+    public func mailComposeController(_ controller:MFMailComposeViewController, didFinishWith result:MFMailComposeResult, error:Error?) {
+        var outputMessage = ""
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:  outputMessage = ""
+        case MFMailComposeResult.saved.rawValue:  outputMessage = ""
+        case MFMailComposeResult.sent.rawValue:  outputMessage = ""
+        case MFMailComposeResult.failed.rawValue: outputMessage = "Something went wrong with sending Mail, try again later."
+        default:break  }
+        
+        if let vc = self.vc {
+            vc.dismiss(animated: false, completion: { () -> Void in
+                if (outputMessage != "") {
+                    self._showAlertView(title: "Email", message: outputMessage);
+                }
+            })
+        }
+        
+        
+    }
+    
+    private func _topMostViewController(_ controller: UIViewController?) -> UIViewController? {
+>>>>>>> 8d04b584bcc713f93a072680c18a9d4ba38ed60a
         var isPresenting: Bool = false
         var topController: UIViewController? = controller
         repeat {
@@ -156,6 +297,7 @@ open class AppShareManager : NSObject {
         return topController
     }
     
+<<<<<<< HEAD
     private func getRootViewController() -> UIViewController? {
         if var window = UIApplication.shared.keyWindow {
             
@@ -184,4 +326,33 @@ open class AppShareManager : NSObject {
         return nil
     }
     
+=======
+    // MARK: -
+    // MARK: PRIVATE Misc Helpers
+    
+    public func bundle() -> Bundle? {
+        var bundle: Bundle? = nil
+        if useMainAppBundleForLocalizations {
+            bundle = Bundle.main
+        } else {
+            let podBundle = Bundle(for: AppShareManager.classForCoder())
+            print(podBundle.bundleIdentifier);
+            if let bundleURL = podBundle.url(forResource: "AppShare", withExtension: nil) {
+                if let resourceBundle = Bundle(url: bundleURL) {
+                    bundle = resourceBundle;
+                }
+            }
+        }
+        if bundle != nil {
+            return bundle;
+        } else {
+            return Bundle.main;
+        }
+    }
+    
+}
+
+public enum AppShareService: Int {
+    case all, facebook, twitter, whatsapp, email
+>>>>>>> 8d04b584bcc713f93a072680c18a9d4ba38ed60a
 }
