@@ -104,7 +104,7 @@ class AppShareViewController : UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = self.fontColor.cgColor
         button.titleEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8);
-        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
+        let frameworkBundle = self.appShare?.manager.bundle()
         if let currentTitle = button.title(for: .normal) {
             let title = frameworkBundle?.localizedString(forKey: currentTitle, value:"", table: "AppShareLocalizable");
             button.setTitle(title, for: .normal);

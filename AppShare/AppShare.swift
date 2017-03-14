@@ -81,6 +81,7 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     var applinkCode : String?;
     var vc : UIViewController?;
     var mailComposer : MFMailComposeViewController?;
+    public var useMainAppBundleForLocalizations : Bool = false;
 
     func shareApp() {
         if let url = _getShareURL() {
@@ -118,7 +119,7 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     }
     
     open func openShareWindow(viewcontroller: UIViewController) {
-        let frameworkBundle = Bundle(identifier: "com.worldshaking.AppShare")
+        let frameworkBundle = self.bundle();
         let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
         let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
         vc.applinkCode = self.applinkCode;
@@ -235,6 +236,23 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
         } while isPresenting
         
         return topController
+    }
+    
+    // MARK: -
+    // MARK: PRIVATE Misc Helpers
+    
+    public func bundle() -> Bundle? {
+        var bundle: Bundle? = nil
+        if useMainAppBundleForLocalizations {
+            bundle = Bundle.main
+        } else {
+            bundle = Bundle(for: AppShareManager.classForCoder())
+        }
+        if bundle != nil {
+            return bundle;
+        } else {
+            return Bundle.main;
+        }
     }
     
 }
