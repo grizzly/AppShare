@@ -246,7 +246,13 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
         if useMainAppBundleForLocalizations {
             bundle = Bundle.main
         } else {
-            bundle = Bundle(for: AppShareManager.classForCoder())
+            let podBundle = Bundle(for: AppShareManager.classForCoder())
+            print(podBundle.bundleIdentifier);
+            if let bundleURL = podBundle.url(forResource: "AppShare", withExtension: nil) {
+                if let resourceBundle = Bundle(url: bundleURL) {
+                    bundle = resourceBundle;
+                }
+            }
         }
         if bundle != nil {
             return bundle;
