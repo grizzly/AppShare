@@ -120,7 +120,7 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     }
     
     open func openShareWindow(viewcontroller: UIViewController) {
-        let frameworkBundle = Bundle(for: AppShare.classForCoder());
+        let frameworkBundle = self.bundle();
         let storyboard = UIStoryboard(name: "AppShare", bundle: frameworkBundle);
         let vc = storyboard.instantiateInitialViewController() as! AppShareViewController;
         vc.applinkCode = self.applinkCode;
@@ -243,16 +243,12 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     // MARK: PRIVATE Misc Helpers
     
     public func bundle() -> Bundle? {
-        
-        print(Bundle(for: AppShare.classForCoder()));
-        
         var bundle: Bundle? = nil
         if useMainAppBundleForLocalizations {
             bundle = Bundle.main
         } else {
             let podBundle = Bundle(for: AppShareManager.classForCoder())
-            if let bundleURL = podBundle.url(forResource: "AppShare", withExtension: "bundle") {
-                print(bundleURL);
+            if let bundleURL = podBundle.url(forResource: "AppShareRessources", withExtension: "bundle") {
                 if let resourceBundle = Bundle(url: bundleURL) {
                     bundle = resourceBundle;
                 }

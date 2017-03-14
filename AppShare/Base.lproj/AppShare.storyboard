@@ -11,7 +11,7 @@
         <!--App Share View Controller-->
         <scene sceneID="ZMb-Yr-EoG">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="4aP-Id-wbh" customClass="AppShareViewController" customModule="AppShareExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="4aP-Id-wbh" customClass="AppShareViewController" customModule="AppShare" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W3g-gk-Qsf"/>
                         <viewControllerLayoutGuide type="bottom" id="aKU-rj-Sjw"/>
