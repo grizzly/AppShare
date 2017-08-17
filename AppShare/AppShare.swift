@@ -129,28 +129,46 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     
     // - Privates
     
-    private func _shareOnFacebook(url: URL) {
-        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
-            let fbSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            fbSheet?.add(url);
+    func _shareURLOnAll(url:URL) {
+        let objectsToShare = [url]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
             if let vc = self.vc {
-                vc.present(fbSheet!, animated: true, completion: nil);
+                vc.present(activityVC, animated: true, completion: nil)
             }
+        }
+    }
+    
+    private func _shareOnFacebook(url: URL) {
+        if #available(iOS 11.0, *) {
+            self._shareURLOnAll(url: url);
         } else {
-            self._showAlertView(title: "Facebook", message: "Please login to your Facebook account in Settings");
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+                let fbSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                fbSheet?.add(url);
+                if let vc = self.vc {
+                    vc.present(fbSheet!, animated: true, completion: nil);
+                }
+            } else {
+                self._showAlertView(title: "Facebook", message: "Please login to your Facebook account in Settings");
+            }
         }
     }
     
     private func _shareOnTwitter(text: String, url: URL) {
-        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
-            let twSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twSheet?.setInitialText(text)
-            twSheet?.add(url);
-            if let vc = self.vc {
-                vc.present(twSheet!, animated: true, completion: nil);
-            }
+        if #available(iOS 11.0, *) {
+            self._shareURLOnAll(url: url);
         } else {
-            self._showAlertView(title: "Twitter", message: "Please login to your Twitter account in Settings");
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+                let twSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                twSheet?.setInitialText(text)
+                twSheet?.add(url);
+                if let vc = self.vc {
+                    vc.present(twSheet!, animated: true, completion: nil);
+                }
+            } else {
+                self._showAlertView(title: "Twitter", message: "Please login to your Twitter account in Settings");
+            }
         }
     }
     

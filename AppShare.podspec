@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "AppShare"
-  spec.version = "0.7.0"
+  spec.version = "0.8.0"
   spec.summary = "A simple yet powerful App Sharing Manager for iOS in Swift 3. Get your App viral now."
   spec.description = <<-DESC
     A simple yet powerful App Sharing Manager for iOS in Swift.
@@ -17,5 +17,5 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.source = { git: "https://github.com/grizzly/AppShare.git", tag: "#{spec.version}", submodules: true }
   spec.source_files = "AppShare/**/*.{h,swift}"
-  spec.ios.resource_bundle = { 'AppShare' => ['Localization/*.lproj'] }
+  spec.ios.resource_bundle = { 'AppShareRessources' => ['AppShareRessources.bundle/*'] }
 end
