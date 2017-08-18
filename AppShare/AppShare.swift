@@ -150,7 +150,7 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
                     vc.present(fbSheet!, animated: true, completion: nil);
                 }
             } else {
-                self._showAlertView(title: "Facebook", message: "Please login to your Facebook account in Settings");
+                self._shareURLOnAll(url: url);
             }
         }
     }
@@ -167,7 +167,7 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
                     vc.present(twSheet!, animated: true, completion: nil);
                 }
             } else {
-                self._showAlertView(title: "Twitter", message: "Please login to your Twitter account in Settings");
+                self._shareURLOnAll(url: url);
             }
         }
     }
