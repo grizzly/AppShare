@@ -49,19 +49,19 @@ class AppShareViewController : UIViewController {
     }
     
     @IBAction func shareOnFacebookButtonPressed(_ sender: Any) {
-        appShare?.shareApp(on: .facebook);
+        appShare?.shareApp(on: .facebook, sourceView: self.shareOnFacebookButton);
     }
     
     @IBAction func shareOnTwitterButtonPressed(_ sender: Any) {
-        appShare?.shareApp(on: .twitter);
+        appShare?.shareApp(on: .twitter, sourceView: self.shareOnTwitterButton);
     }
     
     @IBAction func sendByWhatsAppButtonPressed(_ sender: Any) {
-        appShare?.shareApp(on: .whatsapp);
+        appShare?.shareApp(on: .whatsapp, sourceView: self.sendByWhatsAppButton);
     }
     
     @IBAction func sendByEmailButtonPressed(_ sender: Any) {
-        appShare?.shareApp(on: .email);
+        appShare?.shareApp(on: .email, sourceView: self.sendByEmailButton);
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

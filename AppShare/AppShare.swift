@@ -56,7 +56,8 @@ open class AppShare : NSObject {
     /**
      * Share current app.
      */
-    open func shareApp(on: AppShareService) {
+    open func shareApp(on: AppShareService, sourceView: UIView?) {
+        self.manager.sourceView = sourceView;
         self.manager.shareAppOn(on: on, text: "")
     }
     
@@ -81,16 +82,13 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
     
     var applinkCode : String?;
     var vc : UIViewController?;
+    var sourceView : UIView?;
     var mailComposer : MFMailComposeViewController?;
     public var useMainAppBundleForLocalizations : Bool = false;
     
     func shareApp() {
         if let url = _getShareURL() {
-            let objectsToShare = [url]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            if let vc = self.vc {
-                vc.present(activityVC, animated: true, completion: nil)
-            }
+            self._shareURLOnAll(url: url);
         }
     }
     
@@ -133,9 +131,10 @@ open class AppShareManager : NSObject, MFMailComposeViewControllerDelegate {
         let objectsToShare = [url]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-            if let vc = self.vc {
-                vc.present(activityVC, animated: true, completion: nil)
-            }
+            self.vc?.present(activityVC, animated: true, completion: nil);
+        } else if let sourceView = self.sourceView {
+            activityVC.popoverPresentationController?.sourceView = sourceView;
+            self.vc?.present(activityVC, animated: true, completion: nil)
         }
     }
     
