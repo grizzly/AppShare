@@ -87,7 +87,7 @@ class AppShareViewController : UIViewController {
                 self._setEffectViewValue(self.tintAlpha, forKey: "colorTintAlpha");
                 self._setEffectViewValue(self.blurRadius, forKey: "blurRadius");
                 self.view.addSubview(visualEffectView)
-                self.view.sendSubview(toBack: visualEffectView);
+                self.view.sendSubviewToBack(visualEffectView);
             }
         }
         self.setSocialButtonLayout(button: self.shareOnFacebookButton, bold: true);
